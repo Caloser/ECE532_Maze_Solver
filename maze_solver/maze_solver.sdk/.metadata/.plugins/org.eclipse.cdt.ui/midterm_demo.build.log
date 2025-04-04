@@ -1,0 +1,16 @@
+15:53:44 **** Auto Build of configuration Debug for project midterm_demo ****
+make all 
+'Building target: midterm_demo.elf'
+'Invoking: MicroBlaze gcc linker'
+mb-gcc -Wl,-T -Wl,../src/lscript.ld -L../../midterm_demo_bsp/microblaze_0/lib -mlittle-endian -mcpu=v11.0 -mxl-soft-mul -Wl,--no-relax -Wl,--gc-sections -o "midterm_demo.elf"  ./src/helloworld.o ./src/platform.o   -Wl,--start-group,-lxil,-lgcc,-lc,--end-group
+'Finished building target: midterm_demo.elf'
+' '
+'Invoking: MicroBlaze Print Size'
+mb-size midterm_demo.elf  |tee "midterm_demo.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+  25024	   1452	  22628	  49104	   bfd0	midterm_demo.elf
+'Finished building: midterm_demo.elf.size'
+' '
+
+15:53:45 Build Finished (took 680ms)
+

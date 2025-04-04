@@ -1,0 +1,6 @@
+15:40:39 INFO  : Registering command handlers for SDK TCF services
+15:40:39 INFO  : Launching XSCT server: xsct.bat -interactive C:\Users\Clark\Documents\ece532\gitfinal\ECE532_Maze_Solver\maze_solver\maze_solver.sdk\temp_xsdb_launch_script.tcl
+15:40:44 INFO  : XSCT server has started successfully.
+15:40:44 INFO  : Successfully done setting XSCT server connection channel  
+15:40:49 INFO  : Successfully done setting SDK workspace  
+15:40:49 INFO  : Processing command line option -hwspec C:/Users/Clark/Documents/ece532/gitfinal/ECE532_Maze_Solver/maze_solver/maze_solver.sdk/midterm_demo_wrapper.hdf.

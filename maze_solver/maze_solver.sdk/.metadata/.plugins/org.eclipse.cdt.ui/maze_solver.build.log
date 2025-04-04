@@ -1,0 +1,16 @@
+15:50:38 **** Auto Build of configuration Debug for project maze_solver ****
+make all 
+'Building target: maze_solver.elf'
+'Invoking: MicroBlaze gcc linker'
+mb-gcc -Wl,-T -Wl,../src/lscript.ld -L../../maze_solver_bsp/microblaze_0/lib -mlittle-endian -mcpu=v11.0 -mxl-soft-mul -Wl,--no-relax -Wl,--gc-sections -o "maze_solver.elf"  ./src/helloworld.o ./src/platform.o   -Wl,--start-group,-lxil,-lgcc,-lc,--end-group
+'Finished building target: maze_solver.elf'
+' '
+'Invoking: MicroBlaze Print Size'
+mb-size maze_solver.elf  |tee "maze_solver.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+  38784	   1440	4200392	4240616	 40b4e8	maze_solver.elf
+'Finished building: maze_solver.elf.size'
+' '
+
+15:50:38 Build Finished (took 629ms)
+
