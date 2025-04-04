@@ -1,0 +1,796 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<spirit:component xmlns:xilinx="http://www.xilinx.com" xmlns:spirit="http://www.spiritconsortium.org/XMLSchema/SPIRIT/1685-2009" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <spirit:vendor>xilinx.com</spirit:vendor>
+  <spirit:library>user</spirit:library>
+  <spirit:name>bfs_ip</spirit:name>
+  <spirit:version>1.0</spirit:version>
+  <spirit:busInterfaces>
+    <spirit:busInterface>
+      <spirit:name>axi_clk</spirit:name>
+      <spirit:busType spirit:vendor="xilinx.com" spirit:library="signal" spirit:name="clock" spirit:version="1.0"/>
+      <spirit:abstractionType spirit:vendor="xilinx.com" spirit:library="signal" spirit:name="clock_rtl" spirit:version="1.0"/>
+      <spirit:slave/>
+      <spirit:portMaps>
+        <spirit:portMap>
+          <spirit:logicalPort>
+            <spirit:name>CLK</spirit:name>
+          </spirit:logicalPort>
+          <spirit:physicalPort>
+            <spirit:name>axi_clk</spirit:name>
+          </spirit:physicalPort>
+        </spirit:portMap>
+      </spirit:portMaps>
+      <spirit:parameters>
+        <spirit:parameter>
+          <spirit:name>ASSOCIATED_BUSIF</spirit:name>
+          <spirit:value spirit:id="BUSIFPARAM_VALUE.AXI_CLK.ASSOCIATED_BUSIF">axi_clk:m_axis:s_axis</spirit:value>
+        </spirit:parameter>
+        <spirit:parameter>
+          <spirit:name>ASSOCIATED_RESET</spirit:name>
+          <spirit:value spirit:id="BUSIFPARAM_VALUE.AXI_CLK.ASSOCIATED_RESET">axi_reset_n</spirit:value>
+        </spirit:parameter>
+        <spirit:parameter>
+          <spirit:name>FREQ_HZ</spirit:name>
+          <spirit:value spirit:id="BUSIFPARAM_VALUE.AXI_CLK.FREQ_HZ">100000000</spirit:value>
+        </spirit:parameter>
+      </spirit:parameters>
+    </spirit:busInterface>
+    <spirit:busInterface>
+      <spirit:name>axi_reset_n</spirit:name>
+      <spirit:busType spirit:vendor="xilinx.com" spirit:library="signal" spirit:name="reset" spirit:version="1.0"/>
+      <spirit:abstractionType spirit:vendor="xilinx.com" spirit:library="signal" spirit:name="reset_rtl" spirit:version="1.0"/>
+      <spirit:slave/>
+      <spirit:portMaps>
+        <spirit:portMap>
+          <spirit:logicalPort>
+            <spirit:name>RST</spirit:name>
+          </spirit:logicalPort>
+          <spirit:physicalPort>
+            <spirit:name>axi_reset_n</spirit:name>
+          </spirit:physicalPort>
+        </spirit:portMap>
+      </spirit:portMaps>
+    </spirit:busInterface>
+    <spirit:busInterface>
+      <spirit:name>m_axis</spirit:name>
+      <spirit:busType spirit:vendor="xilinx.com" spirit:library="interface" spirit:name="axis" spirit:version="1.0"/>
+      <spirit:abstractionType spirit:vendor="xilinx.com" spirit:library="interface" spirit:name="axis_rtl" spirit:version="1.0"/>
+      <spirit:master/>
+      <spirit:portMaps>
+        <spirit:portMap>
+          <spirit:logicalPort>
+            <spirit:name>TDATA</spirit:name>
+          </spirit:logicalPort>
+          <spirit:physicalPort>
+            <spirit:name>m_axis_data</spirit:name>
+          </spirit:physicalPort>
+        </spirit:portMap>
+        <spirit:portMap>
+          <spirit:logicalPort>
+            <spirit:name>TVALID</spirit:name>
+          </spirit:logicalPort>
+          <spirit:physicalPort>
+            <spirit:name>m_axis_valid</spirit:name>
+          </spirit:physicalPort>
+        </spirit:portMap>
+        <spirit:portMap>
+          <spirit:logicalPort>
+            <spirit:name>TREADY</spirit:name>
+          </spirit:logicalPort>
+          <spirit:physicalPort>
+            <spirit:name>m_axis_ready</spirit:name>
+          </spirit:physicalPort>
+        </spirit:portMap>
+      </spirit:portMaps>
+    </spirit:busInterface>
+    <spirit:busInterface>
+      <spirit:name>s_axis</spirit:name>
+      <spirit:busType spirit:vendor="xilinx.com" spirit:library="interface" spirit:name="axis" spirit:version="1.0"/>
+      <spirit:abstractionType spirit:vendor="xilinx.com" spirit:library="interface" spirit:name="axis_rtl" spirit:version="1.0"/>
+      <spirit:slave/>
+      <spirit:portMaps>
+        <spirit:portMap>
+          <spirit:logicalPort>
+            <spirit:name>TDATA</spirit:name>
+          </spirit:logicalPort>
+          <spirit:physicalPort>
+            <spirit:name>s_axis_data</spirit:name>
+          </spirit:physicalPort>
+        </spirit:portMap>
+        <spirit:portMap>
+          <spirit:logicalPort>
+            <spirit:name>TVALID</spirit:name>
+          </spirit:logicalPort>
+          <spirit:physicalPort>
+            <spirit:name>s_axis_valid</spirit:name>
+          </spirit:physicalPort>
+        </spirit:portMap>
+        <spirit:portMap>
+          <spirit:logicalPort>
+            <spirit:name>TREADY</spirit:name>
+          </spirit:logicalPort>
+          <spirit:physicalPort>
+            <spirit:name>s_axis_ready</spirit:name>
+          </spirit:physicalPort>
+        </spirit:portMap>
+      </spirit:portMaps>
+    </spirit:busInterface>
+  </spirit:busInterfaces>
+  <spirit:model>
+    <spirit:views>
+      <spirit:view>
+        <spirit:name>xilinx_anylanguagesynthesis</spirit:name>
+        <spirit:displayName>Synthesis</spirit:displayName>
+        <spirit:envIdentifier>:vivado.xilinx.com:synthesis</spirit:envIdentifier>
+        <spirit:language>Verilog</spirit:language>
+        <spirit:modelName>bfs_top</spirit:modelName>
+        <spirit:fileSetRef>
+          <spirit:localName>xilinx_anylanguagesynthesis_view_fileset</spirit:localName>
+        </spirit:fileSetRef>
+        <spirit:parameters>
+          <spirit:parameter>
+            <spirit:name>viewChecksum</spirit:name>
+            <spirit:value>cc9e5168</spirit:value>
+          </spirit:parameter>
+        </spirit:parameters>
+      </spirit:view>
+      <spirit:view>
+        <spirit:name>xilinx_anylanguagebehavioralsimulation</spirit:name>
+        <spirit:displayName>Simulation</spirit:displayName>
+        <spirit:envIdentifier>:vivado.xilinx.com:simulation</spirit:envIdentifier>
+        <spirit:language>Verilog</spirit:language>
+        <spirit:modelName>bfs_top</spirit:modelName>
+        <spirit:fileSetRef>
+          <spirit:localName>xilinx_anylanguagebehavioralsimulation_view_fileset</spirit:localName>
+        </spirit:fileSetRef>
+        <spirit:parameters>
+          <spirit:parameter>
+            <spirit:name>viewChecksum</spirit:name>
+            <spirit:value>cc9e5168</spirit:value>
+          </spirit:parameter>
+        </spirit:parameters>
+      </spirit:view>
+      <spirit:view>
+        <spirit:name>xilinx_testbench</spirit:name>
+        <spirit:displayName>Test Bench</spirit:displayName>
+        <spirit:envIdentifier>:vivado.xilinx.com:simulation.testbench</spirit:envIdentifier>
+        <spirit:modelName>bfs_maze_solver_tb</spirit:modelName>
+        <spirit:fileSetRef>
+          <spirit:localName>xilinx_testbench_view_fileset</spirit:localName>
+        </spirit:fileSetRef>
+        <spirit:parameters>
+          <spirit:parameter>
+            <spirit:name>viewChecksum</spirit:name>
+            <spirit:value>0938c859</spirit:value>
+          </spirit:parameter>
+        </spirit:parameters>
+      </spirit:view>
+      <spirit:view>
+        <spirit:name>xilinx_xpgui</spirit:name>
+        <spirit:displayName>UI Layout</spirit:displayName>
+        <spirit:envIdentifier>:vivado.xilinx.com:xgui.ui</spirit:envIdentifier>
+        <spirit:fileSetRef>
+          <spirit:localName>xilinx_xpgui_view_fileset</spirit:localName>
+        </spirit:fileSetRef>
+        <spirit:parameters>
+          <spirit:parameter>
+            <spirit:name>viewChecksum</spirit:name>
+            <spirit:value>a04cd336</spirit:value>
+          </spirit:parameter>
+        </spirit:parameters>
+      </spirit:view>
+    </spirit:views>
+    <spirit:ports>
+      <spirit:port>
+        <spirit:name>axi_clk</spirit:name>
+        <spirit:wire>
+          <spirit:direction>in</spirit:direction>
+          <spirit:wireTypeDefs>
+            <spirit:wireTypeDef>
+              <spirit:typeName>std_logic</spirit:typeName>
+              <spirit:viewNameRef>xilinx_anylanguagesynthesis</spirit:viewNameRef>
+              <spirit:viewNameRef>xilinx_anylanguagebehavioralsimulation</spirit:viewNameRef>
+            </spirit:wireTypeDef>
+          </spirit:wireTypeDefs>
+        </spirit:wire>
+      </spirit:port>
+      <spirit:port>
+        <spirit:name>axi_reset_n</spirit:name>
+        <spirit:wire>
+          <spirit:direction>in</spirit:direction>
+          <spirit:wireTypeDefs>
+            <spirit:wireTypeDef>
+              <spirit:typeName>std_logic</spirit:typeName>
+              <spirit:viewNameRef>xilinx_anylanguagesynthesis</spirit:viewNameRef>
+              <spirit:viewNameRef>xilinx_anylanguagebehavioralsimulation</spirit:viewNameRef>
+            </spirit:wireTypeDef>
+          </spirit:wireTypeDefs>
+        </spirit:wire>
+      </spirit:port>
+      <spirit:port>
+        <spirit:name>s_axis_valid</spirit:name>
+        <spirit:wire>
+          <spirit:direction>in</spirit:direction>
+          <spirit:wireTypeDefs>
+            <spirit:wireTypeDef>
+              <spirit:typeName>std_logic</spirit:typeName>
+              <spirit:viewNameRef>xilinx_anylanguagesynthesis</spirit:viewNameRef>
+              <spirit:viewNameRef>xilinx_anylanguagebehavioralsimulation</spirit:viewNameRef>
+            </spirit:wireTypeDef>
+          </spirit:wireTypeDefs>
+        </spirit:wire>
+      </spirit:port>
+      <spirit:port>
+        <spirit:name>s_axis_data</spirit:name>
+        <spirit:wire>
+          <spirit:direction>in</spirit:direction>
+          <spirit:vector>
+            <spirit:left spirit:format="long">7</spirit:left>
+            <spirit:right spirit:format="long">0</spirit:right>
+          </spirit:vector>
+          <spirit:wireTypeDefs>
+            <spirit:wireTypeDef>
+              <spirit:typeName>std_logic_vector</spirit:typeName>
+              <spirit:viewNameRef>xilinx_anylanguagesynthesis</spirit:viewNameRef>
+              <spirit:viewNameRef>xilinx_anylanguagebehavioralsimulation</spirit:viewNameRef>
+            </spirit:wireTypeDef>
+          </spirit:wireTypeDefs>
+        </spirit:wire>
+      </spirit:port>
+      <spirit:port>
+        <spirit:name>s_axis_ready</spirit:name>
+        <spirit:wire>
+          <spirit:direction>out</spirit:direction>
+          <spirit:wireTypeDefs>
+            <spirit:wireTypeDef>
+              <spirit:typeName>std_logic</spirit:typeName>
+              <spirit:viewNameRef>xilinx_anylanguagesynthesis</spirit:viewNameRef>
+              <spirit:viewNameRef>xilinx_anylanguagebehavioralsimulation</spirit:viewNameRef>
+            </spirit:wireTypeDef>
+          </spirit:wireTypeDefs>
+        </spirit:wire>
+      </spirit:port>
+      <spirit:port>
+        <spirit:name>m_axis_valid</spirit:name>
+        <spirit:wire>
+          <spirit:direction>out</spirit:direction>
+          <spirit:wireTypeDefs>
+            <spirit:wireTypeDef>
+              <spirit:typeName>std_logic</spirit:typeName>
+              <spirit:viewNameRef>xilinx_anylanguagesynthesis</spirit:viewNameRef>
+              <spirit:viewNameRef>xilinx_anylanguagebehavioralsimulation</spirit:viewNameRef>
+            </spirit:wireTypeDef>
+          </spirit:wireTypeDefs>
+        </spirit:wire>
+      </spirit:port>
+      <spirit:port>
+        <spirit:name>m_axis_data</spirit:name>
+        <spirit:wire>
+          <spirit:direction>out</spirit:direction>
+          <spirit:vector>
+            <spirit:left spirit:format="long">31</spirit:left>
+            <spirit:right spirit:format="long">0</spirit:right>
+          </spirit:vector>
+          <spirit:wireTypeDefs>
+            <spirit:wireTypeDef>
+              <spirit:typeName>std_logic_vector</spirit:typeName>
+              <spirit:viewNameRef>xilinx_anylanguagesynthesis</spirit:viewNameRef>
+              <spirit:viewNameRef>xilinx_anylanguagebehavioralsimulation</spirit:viewNameRef>
+            </spirit:wireTypeDef>
+          </spirit:wireTypeDefs>
+        </spirit:wire>
+      </spirit:port>
+      <spirit:port>
+        <spirit:name>m_axis_ready</spirit:name>
+        <spirit:wire>
+          <spirit:direction>in</spirit:direction>
+          <spirit:wireTypeDefs>
+            <spirit:wireTypeDef>
+              <spirit:typeName>std_logic</spirit:typeName>
+              <spirit:viewNameRef>xilinx_anylanguagesynthesis</spirit:viewNameRef>
+              <spirit:viewNameRef>xilinx_anylanguagebehavioralsimulation</spirit:viewNameRef>
+            </spirit:wireTypeDef>
+          </spirit:wireTypeDefs>
+        </spirit:wire>
+      </spirit:port>
+      <spirit:port>
+        <spirit:name>dest_col</spirit:name>
+        <spirit:wire>
+          <spirit:direction>in</spirit:direction>
+          <spirit:vector>
+            <spirit:left spirit:format="long">9</spirit:left>
+            <spirit:right spirit:format="long">0</spirit:right>
+          </spirit:vector>
+          <spirit:wireTypeDefs>
+            <spirit:wireTypeDef>
+              <spirit:typeName>std_logic_vector</spirit:typeName>
+              <spirit:viewNameRef>xilinx_anylanguagesynthesis</spirit:viewNameRef>
+              <spirit:viewNameRef>xilinx_anylanguagebehavioralsimulation</spirit:viewNameRef>
+            </spirit:wireTypeDef>
+          </spirit:wireTypeDefs>
+        </spirit:wire>
+      </spirit:port>
+      <spirit:port>
+        <spirit:name>dest_row</spirit:name>
+        <spirit:wire>
+          <spirit:direction>in</spirit:direction>
+          <spirit:vector>
+            <spirit:left spirit:format="long">8</spirit:left>
+            <spirit:right spirit:format="long">0</spirit:right>
+          </spirit:vector>
+          <spirit:wireTypeDefs>
+            <spirit:wireTypeDef>
+              <spirit:typeName>std_logic_vector</spirit:typeName>
+              <spirit:viewNameRef>xilinx_anylanguagesynthesis</spirit:viewNameRef>
+              <spirit:viewNameRef>xilinx_anylanguagebehavioralsimulation</spirit:viewNameRef>
+            </spirit:wireTypeDef>
+          </spirit:wireTypeDefs>
+        </spirit:wire>
+      </spirit:port>
+      <spirit:port>
+        <spirit:name>start_col</spirit:name>
+        <spirit:wire>
+          <spirit:direction>in</spirit:direction>
+          <spirit:vector>
+            <spirit:left spirit:format="long">9</spirit:left>
+            <spirit:right spirit:format="long">0</spirit:right>
+          </spirit:vector>
+          <spirit:wireTypeDefs>
+            <spirit:wireTypeDef>
+              <spirit:typeName>std_logic_vector</spirit:typeName>
+              <spirit:viewNameRef>xilinx_anylanguagesynthesis</spirit:viewNameRef>
+              <spirit:viewNameRef>xilinx_anylanguagebehavioralsimulation</spirit:viewNameRef>
+            </spirit:wireTypeDef>
+          </spirit:wireTypeDefs>
+        </spirit:wire>
+      </spirit:port>
+      <spirit:port>
+        <spirit:name>start_row</spirit:name>
+        <spirit:wire>
+          <spirit:direction>in</spirit:direction>
+          <spirit:vector>
+            <spirit:left spirit:format="long">8</spirit:left>
+            <spirit:right spirit:format="long">0</spirit:right>
+          </spirit:vector>
+          <spirit:wireTypeDefs>
+            <spirit:wireTypeDef>
+              <spirit:typeName>std_logic_vector</spirit:typeName>
+              <spirit:viewNameRef>xilinx_anylanguagesynthesis</spirit:viewNameRef>
+              <spirit:viewNameRef>xilinx_anylanguagebehavioralsimulation</spirit:viewNameRef>
+            </spirit:wireTypeDef>
+          </spirit:wireTypeDefs>
+        </spirit:wire>
+      </spirit:port>
+      <spirit:port>
+        <spirit:name>dest_start_valid</spirit:name>
+        <spirit:wire>
+          <spirit:direction>in</spirit:direction>
+          <spirit:wireTypeDefs>
+            <spirit:wireTypeDef>
+              <spirit:typeName>std_logic</spirit:typeName>
+              <spirit:viewNameRef>xilinx_anylanguagesynthesis</spirit:viewNameRef>
+              <spirit:viewNameRef>xilinx_anylanguagebehavioralsimulation</spirit:viewNameRef>
+            </spirit:wireTypeDef>
+          </spirit:wireTypeDefs>
+        </spirit:wire>
+      </spirit:port>
+    </spirit:ports>
+    <spirit:modelParameters>
+      <spirit:modelParameter xsi:type="spirit:nameValueTypeType" spirit:dataType="integer">
+        <spirit:name>MAZE_ROWS</spirit:name>
+        <spirit:displayName>Maze Rows</spirit:displayName>
+        <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.MAZE_ROWS">240</spirit:value>
+      </spirit:modelParameter>
+      <spirit:modelParameter spirit:dataType="integer">
+        <spirit:name>MAZE_COLS</spirit:name>
+        <spirit:displayName>Maze Cols</spirit:displayName>
+        <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.MAZE_COLS">320</spirit:value>
+      </spirit:modelParameter>
+    </spirit:modelParameters>
+  </spirit:model>
+  <spirit:fileSets>
+    <spirit:fileSet>
+      <spirit:name>xilinx_anylanguagesynthesis_view_fileset</spirit:name>
+      <spirit:file>
+        <spirit:name>C:/Users/Clark/Documents/ece532/git/ece532/bfs_ip/lee/lee.srcs/sources_1/new/bfs_top.v</spirit:name>
+        <spirit:fileType>verilogSource</spirit:fileType>
+        <spirit:logicalName>xil_defaultlib</spirit:logicalName>
+      </spirit:file>
+      <spirit:file>
+        <spirit:name>C:/Users/Clark/Documents/ece532/git/ece532/bfs_ip/lee/lee.srcs/sources_1/new/bfs_maze_solver.v</spirit:name>
+        <spirit:fileType>verilogSource</spirit:fileType>
+        <spirit:logicalName>xil_defaultlib</spirit:logicalName>
+      </spirit:file>
+    </spirit:fileSet>
+    <spirit:fileSet>
+      <spirit:name>xilinx_anylanguagebehavioralsimulation_view_fileset</spirit:name>
+      <spirit:file>
+        <spirit:name>C:/Users/Clark/Documents/ece532/git/ece532/bfs_ip/lee/lee.srcs/sources_1/new/bfs_top.v</spirit:name>
+        <spirit:fileType>verilogSource</spirit:fileType>
+        <spirit:userFileType>USED_IN_ipstatic</spirit:userFileType>
+        <spirit:logicalName>xil_defaultlib</spirit:logicalName>
+      </spirit:file>
+      <spirit:file>
+        <spirit:name>C:/Users/Clark/Documents/ece532/git/ece532/bfs_ip/lee/lee.srcs/sources_1/new/bfs_maze_solver.v</spirit:name>
+        <spirit:fileType>verilogSource</spirit:fileType>
+        <spirit:userFileType>USED_IN_ipstatic</spirit:userFileType>
+        <spirit:logicalName>xil_defaultlib</spirit:logicalName>
+      </spirit:file>
+    </spirit:fileSet>
+    <spirit:fileSet>
+      <spirit:name>xilinx_testbench_view_fileset</spirit:name>
+      <spirit:file>
+        <spirit:name>C:/Users/Clark/Documents/ece532/git/ece532/bfs_ip/lee/lee.srcs/sim_1/new/maze10x10.mem</spirit:name>
+        <spirit:userFileType>mem</spirit:userFileType>
+      </spirit:file>
+      <spirit:file>
+        <spirit:name>C:/Users/Clark/Documents/ece532/git/ece532/bfs_ip/lee/lee.srcs/sim_1/new/bfs_maze_solver_tb.v</spirit:name>
+        <spirit:fileType>verilogSource</spirit:fileType>
+        <spirit:logicalName>xil_defaultlib</spirit:logicalName>
+      </spirit:file>
+    </spirit:fileSet>
+    <spirit:fileSet>
+      <spirit:name>xilinx_xpgui_view_fileset</spirit:name>
+      <spirit:file>
+        <spirit:name>xgui/bfs_ip_v1_0.tcl</spirit:name>
+        <spirit:fileType>tclSource</spirit:fileType>
+        <spirit:userFileType>CHECKSUM_a04cd336</spirit:userFileType>
+        <spirit:userFileType>XGUI_VERSION_2</spirit:userFileType>
+      </spirit:file>
+    </spirit:fileSet>
+  </spirit:fileSets>
+  <spirit:description>bfs_ip_v1_0</spirit:description>
+  <spirit:parameters>
+    <spirit:parameter>
+      <spirit:name>MAZE_ROWS</spirit:name>
+      <spirit:displayName>Maze Rows</spirit:displayName>
+      <spirit:value spirit:format="long" spirit:resolve="user" spirit:id="PARAM_VALUE.MAZE_ROWS">240</spirit:value>
+    </spirit:parameter>
+    <spirit:parameter>
+      <spirit:name>MAZE_COLS</spirit:name>
+      <spirit:displayName>Maze Cols</spirit:displayName>
+      <spirit:value spirit:format="long" spirit:resolve="user" spirit:id="PARAM_VALUE.MAZE_COLS">320</spirit:value>
+    </spirit:parameter>
+    <spirit:parameter>
+      <spirit:name>Component_Name</spirit:name>
+      <spirit:value spirit:resolve="user" spirit:id="PARAM_VALUE.Component_Name" spirit:order="1">bfs_top_v1_0</spirit:value>
+    </spirit:parameter>
+  </spirit:parameters>
+  <spirit:vendorExtensions>
+    <xilinx:coreExtensions>
+      <xilinx:supportedFamilies>
+        <xilinx:family xilinx:lifeCycle="Production">virtex7</xilinx:family>
+        <xilinx:family xilinx:lifeCycle="Production">qvirtex7</xilinx:family>
+        <xilinx:family xilinx:lifeCycle="Production">kintex7</xilinx:family>
+        <xilinx:family xilinx:lifeCycle="Production">kintex7l</xilinx:family>
+        <xilinx:family xilinx:lifeCycle="Production">qkintex7</xilinx:family>
+        <xilinx:family xilinx:lifeCycle="Production">qkintex7l</xilinx:family>
+        <xilinx:family xilinx:lifeCycle="Production">artix7</xilinx:family>
+        <xilinx:family xilinx:lifeCycle="Production">artix7l</xilinx:family>
+        <xilinx:family xilinx:lifeCycle="Production">aartix7</xilinx:family>
+        <xilinx:family xilinx:lifeCycle="Production">qartix7</xilinx:family>
+        <xilinx:family xilinx:lifeCycle="Production">zynq</xilinx:family>
+        <xilinx:family xilinx:lifeCycle="Production">qzynq</xilinx:family>
+        <xilinx:family xilinx:lifeCycle="Production">azynq</xilinx:family>
+        <xilinx:family xilinx:lifeCycle="Production">spartan7</xilinx:family>
+        <xilinx:family xilinx:lifeCycle="Production">aspartan7</xilinx:family>
+        <xilinx:family xilinx:lifeCycle="Production">virtexu</xilinx:family>
+        <xilinx:family xilinx:lifeCycle="Production">zynquplus</xilinx:family>
+        <xilinx:family xilinx:lifeCycle="Production">virtexuplus</xilinx:family>
+        <xilinx:family xilinx:lifeCycle="Production">virtexuplusHBM</xilinx:family>
+        <xilinx:family xilinx:lifeCycle="Production">kintexuplus</xilinx:family>
+        <xilinx:family xilinx:lifeCycle="Production">kintexu</xilinx:family>
+      </xilinx:supportedFamilies>
+      <xilinx:taxonomies>
+        <xilinx:taxonomy>/UserIP</xilinx:taxonomy>
+      </xilinx:taxonomies>
+      <xilinx:displayName>bfs_ip_v1_0</xilinx:displayName>
+      <xilinx:definitionSource>package_project</xilinx:definitionSource>
+      <xilinx:coreRevision>20</xilinx:coreRevision>
+      <xilinx:coreCreationDateTime>2025-03-28T19:54:54Z</xilinx:coreCreationDateTime>
+      <xilinx:tags>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@66637a0_ARCHIVE_LOCATION">c:/users/linus/documents/ece532-proj/ece532/bfs_ip/lee</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@7df7f476_ARCHIVE_LOCATION">c:/users/linus/documents/ece532-proj/ece532/bfs_ip/lee</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@50b1a025_ARCHIVE_LOCATION">c:/users/linus/documents/ece532-proj/ece532/bfs_ip/lee</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@75b1d42b_ARCHIVE_LOCATION">c:/users/linus/documents/ece532-proj/ece532/bfs_ip/lee</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@3c066047_ARCHIVE_LOCATION">c:/users/linus/documents/ece532-proj/ece532/bfs_ip/lee</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@1bba3a51_ARCHIVE_LOCATION">c:/users/linus/documents/ece532-proj/ece532/bfs_ip/lee</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@21de6185_ARCHIVE_LOCATION">c:/users/linus/documents/ece532-proj/ece532/bfs_ip/lee</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@6a7ac43b_ARCHIVE_LOCATION">c:/users/linus/documents/ece532-proj/ece532/bfs_ip/lee</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@15b45662_ARCHIVE_LOCATION">c:/users/linus/documents/ece532-proj/ece532/bfs_ip/lee</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@41040605_ARCHIVE_LOCATION">c:/users/linus/documents/ece532-proj/ece532/bfs_ip/lee</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@d0e4fb_ARCHIVE_LOCATION">c:/users/linus/documents/ece532-proj/ece532/bfs_ip/lee</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@35f4684c_ARCHIVE_LOCATION">c:/users/linus/documents/ece532-proj/ece532/bfs_ip/lee</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@832573a_ARCHIVE_LOCATION">c:/users/linus/documents/ece532-proj/ece532/bfs_ip/lee</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@6e8c363c_ARCHIVE_LOCATION">c:/users/linus/documents/ece532-proj/ece532/bfs_ip/lee</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@68dc6d7_ARCHIVE_LOCATION">c:/users/linus/documents/ece532-proj/ece532/bfs_ip/lee</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@40ae2710_ARCHIVE_LOCATION">c:/users/linus/documents/ece532-proj/ece532/bfs_ip/lee</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@5b9ffd91_ARCHIVE_LOCATION">c:/users/linus/documents/ece532-proj/ece532/bfs_ip/lee</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@743faf21_ARCHIVE_LOCATION">c:/users/linus/documents/ece532-proj/ece532/bfs_ip/lee</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@3a7744ab_ARCHIVE_LOCATION">c:/users/linus/documents/ece532-proj/ece532/bfs_ip/lee</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@22997b53_ARCHIVE_LOCATION">c:/users/linus/documents/ece532-proj/ece532/bfs_ip/lee</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@1f8b57a2_ARCHIVE_LOCATION">c:/users/linus/documents/ece532-proj/ece532/bfs_ip/lee</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@2e9e05aa_ARCHIVE_LOCATION">c:/users/linus/documents/ece532-proj/ece532/bfs_ip/lee</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@61a910ec_ARCHIVE_LOCATION">c:/users/linus/documents/ece532-proj/ece532/bfs_ip/lee</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@5217aef7_ARCHIVE_LOCATION">c:/users/linus/documents/ece532-proj/ece532/bfs_ip/lee</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@27f05d12_ARCHIVE_LOCATION">c:/users/linus/documents/ece532-proj/ece532/bfs_ip/lee</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@5bd86dff_ARCHIVE_LOCATION">c:/users/linus/documents/ece532-proj/ece532/bfs_ip/lee</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@6ed1433c_ARCHIVE_LOCATION">c:/users/linus/documents/ece532-proj/ece532/bfs_ip/lee</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@473b204d_ARCHIVE_LOCATION">c:/users/linus/documents/ece532-proj/ece532/bfs_ip/lee</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@1bdadefb_ARCHIVE_LOCATION">c:/users/linus/documents/ece532-proj/ece532/bfs_ip/lee</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@642ae177_ARCHIVE_LOCATION">c:/users/linus/documents/ece532-proj/ece532/bfs_ip/lee</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@48de42b2_ARCHIVE_LOCATION">c:/users/linus/documents/ece532-proj/ece532/bfs_ip/lee</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@1cb035e4_ARCHIVE_LOCATION">c:/users/linus/documents/ece532-proj/ece532/bfs_ip/lee</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@713301e_ARCHIVE_LOCATION">c:/users/linus/documents/ece532-proj/ece532/bfs_ip/lee</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@2ac2c22d_ARCHIVE_LOCATION">c:/users/linus/documents/ece532-proj/ece532/bfs_ip/lee</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@28dbee4e_ARCHIVE_LOCATION">c:/users/linus/documents/ece532-proj/ece532/bfs_ip/lee</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@32c729b4_ARCHIVE_LOCATION">c:/users/linus/documents/ece532-proj/ece532/bfs_ip/lee</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@ac84624_ARCHIVE_LOCATION">c:/users/linus/documents/ece532-proj/ece532/bfs_ip/lee</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@24f72b54_ARCHIVE_LOCATION">c:/users/linus/documents/ece532-proj/ece532/bfs_ip/lee</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@147691d2_ARCHIVE_LOCATION">c:/users/linus/documents/ece532-proj/ece532/bfs_ip/lee</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@52fa60c_ARCHIVE_LOCATION">c:/users/linus/documents/ece532-proj/ece532/bfs_ip/lee</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@424d7f6c_ARCHIVE_LOCATION">c:/users/linus/documents/ece532-proj/ece532/bfs_ip/lee</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@6944af03_ARCHIVE_LOCATION">c:/users/linus/documents/ece532-proj/ece532/bfs_ip/lee</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@73382387_ARCHIVE_LOCATION">c:/users/linus/documents/ece532-proj/ece532/bfs_ip/lee</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@20739d78_ARCHIVE_LOCATION">c:/users/linus/documents/ece532-proj/ece532/bfs_ip/lee</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@3c45676f_ARCHIVE_LOCATION">c:/users/linus/documents/ece532-proj/ece532/bfs_ip/lee</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@5424b07c_ARCHIVE_LOCATION">c:/users/linus/documents/ece532-proj/ece532/bfs_ip/lee</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@72b17e28_ARCHIVE_LOCATION">c:/users/linus/documents/ece532-proj/ece532/bfs_ip/lee</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@5bc68f49_ARCHIVE_LOCATION">c:/users/linus/documents/ece532-proj/ece532/bfs_ip/lee</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@4a3ca4cc_ARCHIVE_LOCATION">c:/users/linus/documents/ece532-proj/ece532/bfs_ip/lee</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@47848393_ARCHIVE_LOCATION">c:/users/linus/documents/ece532-proj/ece532/bfs_ip/lee</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@24487a9e_ARCHIVE_LOCATION">c:/users/linus/documents/ece532-proj/ece532/bfs_ip/lee</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@5e1e1cfc_ARCHIVE_LOCATION">c:/users/linus/documents/ece532-proj/ece532/bfs_ip/lee</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@3832f6a5_ARCHIVE_LOCATION">c:/users/linus/documents/ece532-proj/ece532/bfs_ip/lee</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@6e5f75d0_ARCHIVE_LOCATION">c:/users/linus/documents/ece532-proj/ece532/bfs_ip/lee</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@4a4f4dd0_ARCHIVE_LOCATION">c:/users/linus/documents/ece532-proj/ece532/bfs_ip/lee</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@22822731_ARCHIVE_LOCATION">c:/users/linus/documents/ece532-proj/ece532/bfs_ip/lee</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@315e6cee_ARCHIVE_LOCATION">c:/users/linus/documents/ece532-proj/ece532/bfs_ip/lee</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@8762cc2_ARCHIVE_LOCATION">c:/users/linus/documents/ece532-proj/ece532/bfs_ip/lee</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@2fd6657_ARCHIVE_LOCATION">c:/users/linus/documents/ece532-proj/ece532/bfs_ip/lee</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@fdabac3_ARCHIVE_LOCATION">c:/users/linus/documents/ece532-proj/ece532/bfs_ip/lee</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@65ede0f8_ARCHIVE_LOCATION">c:/users/linus/documents/ece532-proj/ece532/bfs_ip/lee</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@1f5526ad_ARCHIVE_LOCATION">c:/users/linus/documents/ece532-proj/ece532/bfs_ip/lee</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@3fa64d1b_ARCHIVE_LOCATION">c:/users/linus/documents/ece532-proj/ece532/bfs_ip/lee</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@7eb8bbc3_ARCHIVE_LOCATION">c:/users/linus/documents/ece532-proj/ece532/bfs_ip/lee</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@56a39b6a_ARCHIVE_LOCATION">c:/users/linus/documents/ece532-proj/ece532/bfs_ip/lee</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@2c5b9ef1_ARCHIVE_LOCATION">c:/users/linus/documents/ece532-proj/ece532/bfs_ip/lee</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@63092c1e_ARCHIVE_LOCATION">c:/users/linus/documents/ece532-proj/ece532/bfs_ip/lee</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@53769608_ARCHIVE_LOCATION">c:/users/linus/documents/ece532-proj/ece532/bfs_ip/lee</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@1cd50ae1_ARCHIVE_LOCATION">c:/users/linus/documents/ece532-proj/ece532/bfs_ip/lee</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@694714f3_ARCHIVE_LOCATION">c:/users/linus/documents/ece532-proj/ece532/bfs_ip/lee</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@4f5cf13e_ARCHIVE_LOCATION">c:/users/linus/documents/ece532-proj/ece532/bfs_ip/lee</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@52e39f11_ARCHIVE_LOCATION">c:/users/linus/documents/ece532-proj/ece532/bfs_ip/lee</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@2a50986b_ARCHIVE_LOCATION">c:/users/linus/documents/ece532-proj/ece532/bfs_ip/lee</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@9f9a0d0_ARCHIVE_LOCATION">c:/users/linus/documents/ece532-proj/ece532/bfs_ip/lee</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@2eb80f82_ARCHIVE_LOCATION">c:/users/linus/documents/ece532-proj/ece532/bfs_ip/lee</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@7c1181ff_ARCHIVE_LOCATION">c:/users/linus/documents/ece532-proj/ece532/bfs_ip/lee</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@47690718_ARCHIVE_LOCATION">c:/users/linus/documents/ece532-proj/ece532/bfs_ip/lee</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@75836ec9_ARCHIVE_LOCATION">c:/users/linus/documents/ece532-proj/ece532/bfs_ip/lee</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@4e3124b9_ARCHIVE_LOCATION">c:/users/linus/documents/ece532-proj/ece532/bfs_ip/lee</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@4439679d_ARCHIVE_LOCATION">c:/users/linus/documents/ece532-proj/ece532/bfs_ip/lee</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@651caaa3_ARCHIVE_LOCATION">c:/users/linus/documents/ece532-proj/ece532/bfs_ip/lee</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@188c8c75_ARCHIVE_LOCATION">c:/users/linus/documents/ece532-proj/ece532/bfs_ip/lee</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@7ab2f9b7_ARCHIVE_LOCATION">c:/users/linus/documents/ece532-proj/ece532/bfs_ip/lee</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@47b0ac3e_ARCHIVE_LOCATION">c:/users/linus/documents/ece532-proj/ece532/bfs_ip/lee</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@b496520_ARCHIVE_LOCATION">c:/users/linus/documents/ece532-proj/ece532/bfs_ip/lee</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@1be69a4b_ARCHIVE_LOCATION">c:/users/linus/documents/ece532-proj/ece532/bfs_ip/lee</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@69faa636_ARCHIVE_LOCATION">c:/users/linus/documents/ece532-proj/ece532/bfs_ip/lee</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@79c51e31_ARCHIVE_LOCATION">c:/users/linus/documents/ece532-proj/ece532/bfs_ip/lee</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@544e2817_ARCHIVE_LOCATION">c:/users/linus/documents/ece532-proj/ece532/bfs_ip/lee</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@71849fd0_ARCHIVE_LOCATION">c:/users/linus/documents/ece532-proj/ece532/bfs_ip/lee</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@6c2a5a75_ARCHIVE_LOCATION">c:/users/linus/documents/ece532-proj/ece532/bfs_ip/lee</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@76268bf8_ARCHIVE_LOCATION">c:/users/linus/documents/ece532-proj/ece532/bfs_ip/lee</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@faab86a_ARCHIVE_LOCATION">c:/users/linus/documents/ece532-proj/ece532/bfs_ip/lee</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@7165b0b0_ARCHIVE_LOCATION">c:/users/linus/documents/ece532-proj/ece532/bfs_ip/lee</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@389a9c_ARCHIVE_LOCATION">c:/users/linus/documents/ece532-proj/ece532/bfs_ip/lee</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@25c0b775_ARCHIVE_LOCATION">c:/users/linus/documents/ece532-proj/ece532/bfs_ip/lee</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@735ccc67_ARCHIVE_LOCATION">c:/users/linus/documents/ece532-proj/ece532/bfs_ip/lee</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@27563e3f_ARCHIVE_LOCATION">c:/users/linus/documents/ece532-proj/ece532/bfs_ip/lee</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@265daa8a_ARCHIVE_LOCATION">c:/users/linus/documents/ece532-proj/ece532/bfs_ip/lee</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@bb76227_ARCHIVE_LOCATION">c:/users/linus/documents/ece532-proj/ece532/bfs_ip/lee</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@24acbde9_ARCHIVE_LOCATION">c:/users/linus/documents/ece532-proj/ece532/bfs_ip/lee</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@5fbaa41_ARCHIVE_LOCATION">c:/users/linus/documents/ece532-proj/ece532/bfs_ip/lee</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@1aa3c041_ARCHIVE_LOCATION">c:/users/linus/documents/ece532-proj/ece532/bfs_ip/lee</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@28574737_ARCHIVE_LOCATION">c:/users/linus/documents/ece532-proj/ece532/bfs_ip/lee</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@359d13f5_ARCHIVE_LOCATION">c:/users/linus/documents/ece532-proj/ece532/bfs_ip/lee</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@55ab851c_ARCHIVE_LOCATION">c:/users/linus/documents/ece532-proj/ece532/bfs_ip/lee</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@12b7cf2_ARCHIVE_LOCATION">c:/users/linus/documents/ece532-proj/ece532/bfs_ip/lee</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@18c05396_ARCHIVE_LOCATION">c:/users/linus/documents/ece532-proj/ece532/bfs_ip/lee</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@eb5add8_ARCHIVE_LOCATION">c:/users/linus/documents/ece532-proj/ece532/bfs_ip/lee</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@4b1e1276_ARCHIVE_LOCATION">c:/users/linus/documents/ece532-proj/ece532/bfs_ip/lee</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@55e777ea_ARCHIVE_LOCATION">c:/users/linus/documents/ece532-proj/ece532/bfs_ip/lee</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@5713e66b_ARCHIVE_LOCATION">c:/users/linus/documents/ece532-proj/ece532/bfs_ip/lee</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@47f2184a_ARCHIVE_LOCATION">c:/users/linus/documents/ece532-proj/ece532/bfs_ip/lee</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@3c68170f_ARCHIVE_LOCATION">c:/users/linus/documents/ece532-proj/ece532/bfs_ip/lee</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@44e92614_ARCHIVE_LOCATION">c:/users/linus/documents/ece532-proj/ece532/bfs_ip/lee</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@37960cbf_ARCHIVE_LOCATION">c:/users/linus/documents/ece532-proj/ece532/bfs_ip/lee</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@157643e4_ARCHIVE_LOCATION">c:/users/linus/documents/ece532-proj/ece532/bfs_ip/lee</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@2bc84f3a_ARCHIVE_LOCATION">c:/users/linus/documents/ece532-proj/ece532/bfs_ip/lee</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@614d77e8_ARCHIVE_LOCATION">c:/users/linus/documents/ece532-proj/ece532/bfs_ip/lee</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@720db2c3_ARCHIVE_LOCATION">c:/users/linus/documents/ece532-proj/ece532/bfs_ip/lee</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@69c0c753_ARCHIVE_LOCATION">c:/users/linus/documents/ece532-proj/ece532/bfs_ip/lee</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@bbf28b3_ARCHIVE_LOCATION">c:/users/linus/documents/ece532-proj/ece532/bfs_ip/lee</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@57731c50_ARCHIVE_LOCATION">c:/users/linus/documents/ece532-proj/ece532/bfs_ip/lee</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@235e626f_ARCHIVE_LOCATION">c:/users/linus/documents/ece532-proj/ece532/bfs_ip/lee</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@6d7b6bf8_ARCHIVE_LOCATION">c:/users/linus/documents/ece532-proj/ece532/bfs_ip/lee</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@5ccd47f5_ARCHIVE_LOCATION">c:/users/linus/documents/ece532-proj/ece532/bfs_ip/lee</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@480a567e_ARCHIVE_LOCATION">c:/users/linus/documents/ece532-proj/ece532/bfs_ip/lee</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@249d46a8_ARCHIVE_LOCATION">c:/users/linus/documents/ece532-proj/ece532/bfs_ip/lee</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@4d8ea2cf_ARCHIVE_LOCATION">c:/users/linus/documents/ece532-proj/ece532/bfs_ip/lee</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@2e23184f_ARCHIVE_LOCATION">c:/users/linus/documents/ece532-proj/ece532/bfs_ip/lee</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@1a80c93a_ARCHIVE_LOCATION">c:/users/linus/documents/ece532-proj/ece532/bfs_ip/lee</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@b76e558_ARCHIVE_LOCATION">c:/users/linus/documents/ece532-proj/ece532/bfs_ip/lee</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@772b247f_ARCHIVE_LOCATION">c:/users/linus/documents/ece532-proj/ece532/bfs_ip/lee</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@b978a4a_ARCHIVE_LOCATION">c:/users/linus/documents/ece532-proj/ece532/bfs_ip/lee</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@4c906b2a_ARCHIVE_LOCATION">c:/users/linus/documents/ece532-proj/ece532/bfs_ip/lee</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@98de7ed_ARCHIVE_LOCATION">c:/users/linus/documents/ece532-proj/ece532/bfs_ip/lee</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@2e42ec30_ARCHIVE_LOCATION">c:/users/linus/documents/ece532-proj/ece532/bfs_ip/lee</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@28818e4c_ARCHIVE_LOCATION">c:/users/linus/documents/ece532-proj/ece532/bfs_ip/lee</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@3c410f3c_ARCHIVE_LOCATION">c:/users/linus/documents/ece532-proj/ece532/bfs_ip/lee</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@2b84ce03_ARCHIVE_LOCATION">c:/users/linus/documents/ece532-proj/ece532/bfs_ip/lee</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@109a52c0_ARCHIVE_LOCATION">c:/users/linus/documents/ece532-proj/ece532/bfs_ip/lee</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@6f522d44_ARCHIVE_LOCATION">c:/users/linus/documents/ece532-proj/ece532/bfs_ip/lee</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@d05fba9_ARCHIVE_LOCATION">c:/users/clark/documents/ece532/git/ece532/bfs_ip/lee</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@208a706e_ARCHIVE_LOCATION">c:/users/clark/documents/ece532/git/ece532/bfs_ip/lee</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@7e07fd1_ARCHIVE_LOCATION">c:/users/clark/documents/ece532/git/ece532/bfs_ip/lee</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@78e2e899_ARCHIVE_LOCATION">c:/users/clark/documents/ece532/git/ece532/bfs_ip/lee</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@3d8b15a9_ARCHIVE_LOCATION">c:/users/clark/documents/ece532/git/ece532/bfs_ip/lee</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@271b361a_ARCHIVE_LOCATION">c:/users/clark/documents/ece532/git/ece532/bfs_ip/lee</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@1702b808_ARCHIVE_LOCATION">c:/users/clark/documents/ece532/git/ece532/bfs_ip/lee</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@4eb597f3_ARCHIVE_LOCATION">c:/users/clark/documents/ece532/git/ece532/bfs_ip/lee</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@2cee3be1_ARCHIVE_LOCATION">c:/users/clark/documents/ece532/git/ece532/bfs_ip/lee</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@7385e2be_ARCHIVE_LOCATION">c:/users/clark/documents/ece532/git/ece532/bfs_ip/lee</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@2d086bcb_ARCHIVE_LOCATION">c:/users/clark/documents/ece532/git/ece532/bfs_ip/lee</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@6f391e3_ARCHIVE_LOCATION">c:/users/clark/documents/ece532/git/ece532/bfs_ip/lee</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@af4ab83_ARCHIVE_LOCATION">c:/users/clark/documents/ece532/git/ece532/bfs_ip/lee</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@1535fea0_ARCHIVE_LOCATION">c:/users/clark/documents/ece532/git/ece532/bfs_ip/lee</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@1b2bad6e_ARCHIVE_LOCATION">c:/users/clark/documents/ece532/git/ece532/bfs_ip/lee</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@6b24e60a_ARCHIVE_LOCATION">c:/users/clark/documents/ece532/git/ece532/bfs_ip/lee</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@7cd06c08_ARCHIVE_LOCATION">c:/users/clark/documents/ece532/git/ece532/bfs_ip/lee</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@36d4ddc2_ARCHIVE_LOCATION">c:/users/clark/documents/ece532/git/ece532/bfs_ip/lee</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@6bb4cd5a_ARCHIVE_LOCATION">c:/users/clark/documents/ece532/git/ece532/bfs_ip/lee</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@680b9786_ARCHIVE_LOCATION">c:/users/clark/documents/ece532/git/ece532/bfs_ip/lee</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@24d8d463_ARCHIVE_LOCATION">c:/users/clark/documents/ece532/git/ece532/bfs_ip/lee</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@7cb462d5_ARCHIVE_LOCATION">c:/users/clark/documents/ece532/git/ece532/bfs_ip/lee</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@3da191c6_ARCHIVE_LOCATION">c:/users/clark/documents/ece532/git/ece532/bfs_ip/lee</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@4ec62e62_ARCHIVE_LOCATION">c:/users/clark/documents/ece532/git/ece532/bfs_ip/lee</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@6098b96c_ARCHIVE_LOCATION">c:/users/clark/documents/ece532/git/ece532/bfs_ip/lee</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@3c4dc372_ARCHIVE_LOCATION">c:/users/clark/documents/ece532/git/ece532/bfs_ip/lee</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@28597c7a_ARCHIVE_LOCATION">c:/users/clark/documents/ece532/git/ece532/bfs_ip/lee</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@1c2e2d68_ARCHIVE_LOCATION">c:/users/clark/documents/ece532/git/ece532/bfs_ip/lee</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@584e1c57_ARCHIVE_LOCATION">c:/users/clark/documents/ece532/git/ece532/bfs_ip/lee</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@d33bd1b_ARCHIVE_LOCATION">c:/users/clark/documents/ece532/git/ece532/bfs_ip/lee</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@57111838_ARCHIVE_LOCATION">c:/users/clark/documents/ece532/git/ece532/bfs_ip/lee</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@e28726d_ARCHIVE_LOCATION">c:/users/clark/documents/ece532/git/ece532/bfs_ip/lee</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@3d7da93a_ARCHIVE_LOCATION">c:/users/clark/documents/ece532/git/ece532/bfs_ip/lee</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@7a824373_ARCHIVE_LOCATION">c:/users/clark/documents/ece532/git/ece532/bfs_ip/lee</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@1208d2e2_ARCHIVE_LOCATION">c:/users/clark/documents/ece532/git/ece532/bfs_ip/lee</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@57dbeafb_ARCHIVE_LOCATION">c:/users/clark/documents/ece532/git/ece532/bfs_ip/lee</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@231f1d48_ARCHIVE_LOCATION">c:/users/clark/documents/ece532/git/ece532/bfs_ip/lee</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@7bdad2ec_ARCHIVE_LOCATION">c:/users/clark/documents/ece532/git/ece532/bfs_ip/lee</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@7183a319_ARCHIVE_LOCATION">c:/users/clark/documents/ece532/git/ece532/bfs_ip/lee</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@1e6da9e1_ARCHIVE_LOCATION">c:/users/clark/documents/ece532/git/ece532/bfs_ip/lee</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@53171215_ARCHIVE_LOCATION">c:/users/clark/documents/ece532/git/ece532/bfs_ip/lee</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@4536bef1_ARCHIVE_LOCATION">c:/users/clark/documents/ece532/git/ece532/bfs_ip/lee</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@7d20c9c0_ARCHIVE_LOCATION">c:/users/clark/documents/ece532/git/ece532/bfs_ip/lee</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@1e05c0b4_ARCHIVE_LOCATION">c:/users/clark/documents/ece532/git/ece532/bfs_ip/lee</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@367de544_ARCHIVE_LOCATION">c:/users/clark/documents/ece532/git/ece532/bfs_ip/lee</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@3920ea30_ARCHIVE_LOCATION">c:/users/clark/documents/ece532/git/ece532/bfs_ip/lee</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@6ebba1aa_ARCHIVE_LOCATION">c:/users/clark/documents/ece532/git/ece532/bfs_ip/lee</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@55b23a4e_ARCHIVE_LOCATION">c:/users/clark/documents/ece532/git/ece532/bfs_ip/lee</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@3814cce1_ARCHIVE_LOCATION">c:/users/clark/documents/ece532/git/ece532/bfs_ip/lee</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@7c375a7c_ARCHIVE_LOCATION">c:/users/clark/documents/ece532/git/ece532/bfs_ip/lee</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@79c21ca8_ARCHIVE_LOCATION">c:/users/clark/documents/ece532/git/ece532/bfs_ip/lee</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@3ac32048_ARCHIVE_LOCATION">c:/users/clark/documents/ece532/git/ece532/bfs_ip/lee</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@69fc9ff4_ARCHIVE_LOCATION">c:/users/clark/documents/ece532/git/ece532/bfs_ip/lee</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@56ebc2f5_ARCHIVE_LOCATION">c:/users/clark/documents/ece532/git/ece532/bfs_ip/lee</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@5e38e65f_ARCHIVE_LOCATION">c:/users/clark/documents/ece532/git/ece532/bfs_ip/lee</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@58722131_ARCHIVE_LOCATION">c:/users/clark/documents/ece532/git/ece532/bfs_ip/lee</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@55575df9_ARCHIVE_LOCATION">c:/users/clark/documents/ece532/git/ece532/bfs_ip/lee</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@228dbe18_ARCHIVE_LOCATION">c:/users/clark/documents/ece532/git/ece532/bfs_ip/lee</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@3d0ca546_ARCHIVE_LOCATION">c:/users/clark/documents/ece532/git/ece532/bfs_ip/lee</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@6134d9dc_ARCHIVE_LOCATION">c:/users/clark/documents/ece532/git/ece532/bfs_ip/lee</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@47299aaa_ARCHIVE_LOCATION">c:/users/clark/documents/ece532/git/ece532/bfs_ip/lee</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@23fc4738_ARCHIVE_LOCATION">c:/users/clark/documents/ece532/git/ece532/bfs_ip/lee</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@4371e7d6_ARCHIVE_LOCATION">c:/users/clark/documents/ece532/git/ece532/bfs_ip/lee</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@10dafa3e_ARCHIVE_LOCATION">c:/users/clark/documents/ece532/git/ece532/bfs_ip/lee</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@4822cb6b_ARCHIVE_LOCATION">c:/users/clark/documents/ece532/git/ece532/bfs_ip/lee</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@6e22432a_ARCHIVE_LOCATION">c:/users/clark/documents/ece532/git/ece532/bfs_ip/lee</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@6bd0cd4f_ARCHIVE_LOCATION">c:/users/clark/documents/ece532/git/ece532/bfs_ip/lee</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@4454bef7_ARCHIVE_LOCATION">c:/users/clark/documents/ece532/git/ece532/bfs_ip/lee</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@1bcb1b61_ARCHIVE_LOCATION">c:/users/clark/documents/ece532/git/ece532/bfs_ip/lee</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@47b5fdcc_ARCHIVE_LOCATION">c:/users/clark/documents/ece532/git/ece532/bfs_ip/lee</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@7884199c_ARCHIVE_LOCATION">c:/users/clark/documents/ece532/git/ece532/bfs_ip/lee</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@4bcbd77b_ARCHIVE_LOCATION">c:/users/clark/documents/ece532/git/ece532/bfs_ip/lee</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@604c3fc8_ARCHIVE_LOCATION">c:/users/clark/documents/ece532/git/ece532/bfs_ip/lee</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@5216fd2f_ARCHIVE_LOCATION">c:/users/clark/documents/ece532/git/ece532/bfs_ip/lee</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@46386544_ARCHIVE_LOCATION">c:/users/clark/documents/ece532/git/ece532/bfs_ip/lee</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@e2872fd_ARCHIVE_LOCATION">c:/users/clark/documents/ece532/git/ece532/bfs_ip/lee</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@3e5b1a58_ARCHIVE_LOCATION">c:/users/clark/documents/ece532/git/ece532/bfs_ip/lee</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@53e7848_ARCHIVE_LOCATION">c:/users/clark/documents/ece532/git/ece532/bfs_ip/lee</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@29896bea_ARCHIVE_LOCATION">c:/users/clark/documents/ece532/git/ece532/bfs_ip/lee</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@5920c778_ARCHIVE_LOCATION">c:/users/clark/documents/ece532/git/ece532/bfs_ip/lee</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@424f5cdf_ARCHIVE_LOCATION">c:/users/clark/documents/ece532/git/ece532/bfs_ip/lee</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@437697ad_ARCHIVE_LOCATION">c:/users/clark/documents/ece532/git/ece532/bfs_ip/lee</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@552e54df_ARCHIVE_LOCATION">c:/users/clark/documents/ece532/git/ece532/bfs_ip/lee</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@2f40b834_ARCHIVE_LOCATION">c:/users/clark/documents/ece532/git/ece532/bfs_ip/lee</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@16ed3167_ARCHIVE_LOCATION">c:/users/clark/documents/ece532/git/ece532/bfs_ip/lee</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@f8c4864_ARCHIVE_LOCATION">c:/users/clark/documents/ece532/git/ece532/bfs_ip/lee</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@613473b1_ARCHIVE_LOCATION">c:/users/clark/documents/ece532/git/ece532/bfs_ip/lee</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@76685493_ARCHIVE_LOCATION">c:/users/clark/documents/ece532/git/ece532/bfs_ip/lee</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@4a9c585c_ARCHIVE_LOCATION">c:/users/clark/documents/ece532/git/ece532/bfs_ip/lee</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@60e97765_ARCHIVE_LOCATION">c:/users/clark/documents/ece532/git/ece532/bfs_ip/lee</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@6ecd56af_ARCHIVE_LOCATION">c:/users/clark/documents/ece532/git/ece532/bfs_ip/lee</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@7f635c55_ARCHIVE_LOCATION">c:/users/clark/documents/ece532/git/ece532/bfs_ip/lee</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@664358da_ARCHIVE_LOCATION">c:/users/clark/documents/ece532/git/ece532/bfs_ip/lee</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@2a3d648f_ARCHIVE_LOCATION">c:/users/clark/documents/ece532/git/ece532/bfs_ip/lee</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@77874ab0_ARCHIVE_LOCATION">c:/users/clark/documents/ece532/git/ece532/bfs_ip/lee</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@5e8e3e82_ARCHIVE_LOCATION">c:/users/clark/documents/ece532/git/ece532/bfs_ip/lee</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@3222c364_ARCHIVE_LOCATION">c:/users/clark/documents/ece532/git/ece532/bfs_ip/lee</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@60384015_ARCHIVE_LOCATION">c:/users/clark/documents/ece532/git/ece532/bfs_ip/lee</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@479e7553_ARCHIVE_LOCATION">c:/users/clark/documents/ece532/git/ece532/bfs_ip/lee</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@1acc8783_ARCHIVE_LOCATION">c:/users/clark/documents/ece532/git/ece532/bfs_ip/lee</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@458ee443_ARCHIVE_LOCATION">c:/users/clark/documents/ece532/git/ece532/bfs_ip/lee</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@54d56ad0_ARCHIVE_LOCATION">c:/users/clark/documents/ece532/git/ece532/bfs_ip/lee</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@291dfb80_ARCHIVE_LOCATION">c:/users/clark/documents/ece532/git/ece532/bfs_ip/lee</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@6530a4de_ARCHIVE_LOCATION">c:/users/clark/documents/ece532/git/ece532/bfs_ip/lee</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@5f904df1_ARCHIVE_LOCATION">c:/users/clark/documents/ece532/git/ece532/bfs_ip/lee</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@610a0146_ARCHIVE_LOCATION">c:/users/clark/documents/ece532/git/ece532/bfs_ip/lee</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@635298c6_ARCHIVE_LOCATION">c:/users/clark/documents/ece532/git/ece532/bfs_ip/lee</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@3d6bf19a_ARCHIVE_LOCATION">c:/users/clark/documents/ece532/git/ece532/bfs_ip/lee</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@6ca411e_ARCHIVE_LOCATION">c:/users/clark/documents/ece532/git/ece532/bfs_ip/lee</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@9ad2de2_ARCHIVE_LOCATION">c:/users/clark/documents/ece532/git/ece532/bfs_ip/lee</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@7dbb650c_ARCHIVE_LOCATION">c:/users/clark/documents/ece532/git/ece532/bfs_ip/lee</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@600c9bde_ARCHIVE_LOCATION">c:/users/clark/documents/ece532/git/ece532/bfs_ip/lee</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@64426632_ARCHIVE_LOCATION">c:/users/clark/documents/ece532/git/ece532/bfs_ip/lee</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@17985d4e_ARCHIVE_LOCATION">c:/users/clark/documents/ece532/git/ece532/bfs_ip/lee</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@5cc990e4_ARCHIVE_LOCATION">c:/users/clark/documents/ece532/git/ece532/bfs_ip/lee</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@58175b16_ARCHIVE_LOCATION">c:/users/clark/documents/ece532/git/ece532/bfs_ip/lee</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@5589896f_ARCHIVE_LOCATION">c:/users/clark/documents/ece532/git/ece532/bfs_ip/lee</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@59ac760a_ARCHIVE_LOCATION">c:/users/clark/documents/ece532/git/ece532/bfs_ip/lee</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@5350fac5_ARCHIVE_LOCATION">c:/users/clark/documents/ece532/git/ece532/bfs_ip/lee</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@44f20360_ARCHIVE_LOCATION">c:/users/clark/documents/ece532/git/ece532/bfs_ip/lee</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@6327564a_ARCHIVE_LOCATION">c:/users/clark/documents/ece532/git/ece532/bfs_ip/lee</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@21a13440_ARCHIVE_LOCATION">c:/users/clark/documents/ece532/git/ece532/bfs_ip/lee</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@186e39cd_ARCHIVE_LOCATION">c:/users/clark/documents/ece532/git/ece532/bfs_ip/lee</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@6adf590c_ARCHIVE_LOCATION">c:/users/clark/documents/ece532/git/ece532/bfs_ip/lee</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@dcaeea9_ARCHIVE_LOCATION">c:/users/clark/documents/ece532/git/ece532/bfs_ip/lee</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@2c754d53_ARCHIVE_LOCATION">c:/users/clark/documents/ece532/git/ece532/bfs_ip/lee</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@4c362b0c_ARCHIVE_LOCATION">c:/users/clark/documents/ece532/git/ece532/bfs_ip/lee</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@3f7da2_ARCHIVE_LOCATION">c:/users/clark/documents/ece532/git/ece532/bfs_ip/lee</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@50552110_ARCHIVE_LOCATION">c:/users/clark/documents/ece532/git/ece532/bfs_ip/lee</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@1ecd4773_ARCHIVE_LOCATION">c:/users/clark/documents/ece532/git/ece532/bfs_ip/lee</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@45978290_ARCHIVE_LOCATION">c:/users/clark/documents/ece532/git/ece532/bfs_ip/lee</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@242a6a67_ARCHIVE_LOCATION">c:/users/clark/documents/ece532/git/ece532/bfs_ip/lee</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@7852a39a_ARCHIVE_LOCATION">c:/users/clark/documents/ece532/git/ece532/bfs_ip/lee</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@710648ca_ARCHIVE_LOCATION">c:/users/clark/documents/ece532/git/ece532/bfs_ip/lee</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@4b5e8b15_ARCHIVE_LOCATION">c:/users/clark/documents/ece532/git/ece532/bfs_ip/lee</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@2b6df08b_ARCHIVE_LOCATION">c:/users/clark/documents/ece532/git/ece532/bfs_ip/lee</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@10e5267f_ARCHIVE_LOCATION">c:/users/clark/documents/ece532/git/ece532/bfs_ip/lee</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@6fb76555_ARCHIVE_LOCATION">c:/users/clark/documents/ece532/git/ece532/bfs_ip/lee</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@3e76f53e_ARCHIVE_LOCATION">c:/users/clark/documents/ece532/git/ece532/bfs_ip/lee</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@2ed6b056_ARCHIVE_LOCATION">c:/users/clark/documents/ece532/git/ece532/bfs_ip/lee</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@75cf1392_ARCHIVE_LOCATION">c:/users/clark/documents/ece532/git/ece532/bfs_ip/lee</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@1f6432a8_ARCHIVE_LOCATION">c:/users/clark/documents/ece532/git/ece532/bfs_ip/lee</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@2aff3253_ARCHIVE_LOCATION">c:/users/clark/documents/ece532/git/ece532/bfs_ip/lee</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@499c44aa_ARCHIVE_LOCATION">c:/users/clark/documents/ece532/git/ece532/bfs_ip/lee</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@231942d6_ARCHIVE_LOCATION">c:/users/clark/documents/ece532/git/ece532/bfs_ip/lee</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@5c4192f0_ARCHIVE_LOCATION">c:/users/clark/documents/ece532/git/ece532/bfs_ip/lee</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@76470ef9_ARCHIVE_LOCATION">c:/users/clark/documents/ece532/git/ece532/bfs_ip/lee</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@3638d148_ARCHIVE_LOCATION">c:/users/clark/documents/ece532/git/ece532/bfs_ip/lee</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@7515d32c_ARCHIVE_LOCATION">c:/users/clark/documents/ece532/git/ece532/bfs_ip/lee</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@3507228f_ARCHIVE_LOCATION">c:/users/clark/documents/ece532/git/ece532/bfs_ip/lee</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@56aac795_ARCHIVE_LOCATION">c:/users/clark/documents/ece532/git/ece532/bfs_ip/lee</xilinx:tag>
+      </xilinx:tags>
+    </xilinx:coreExtensions>
+    <xilinx:packagingInfo>
+      <xilinx:xilinxVersion>2018.3</xilinx:xilinxVersion>
+      <xilinx:checksum xilinx:scope="busInterfaces" xilinx:value="edb06dd2"/>
+      <xilinx:checksum xilinx:scope="fileGroups" xilinx:value="fd57502e"/>
+      <xilinx:checksum xilinx:scope="ports" xilinx:value="e5507d1f"/>
+      <xilinx:checksum xilinx:scope="hdlParameters" xilinx:value="a7d00682"/>
+      <xilinx:checksum xilinx:scope="parameters" xilinx:value="66af5779"/>
+    </xilinx:packagingInfo>
+  </spirit:vendorExtensions>
+</spirit:component>
