@@ -2,7 +2,7 @@
 
 ## Design Tree
 ``` C
-ECE532_Audio_Vocoder
+ECE532_Maze_Solver
 ├── README.md
 ├── maze_solver
 │   ├── maze_solver.tcl  // tcl script to generate block design
