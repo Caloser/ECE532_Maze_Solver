@@ -30,8 +30,7 @@ ECE532_Maze_Solver
 │               └── camera_read.v
 ├── bfs_ip/lee/lee.srcs/sources_1  // custom IP
 │   ├── bfs_maze_solver.v
-│   ├── bfs_top.v
-│   └── lee.v
+│   └── bfs_top.v
 └── image_proc_ips
     ├── dilation/dilation.srcs/sources_1/new  // custom IP
     |   ├── dilation.v
@@ -53,3 +52,9 @@ The maze_solver project can be opened with the maze_solver.xpr. Note you will ne
 All Microblaze files are inside maze_solver/maze_solver.sdk which includes the hardware and c files to run the maze_solver program. When running the demo all blocks will first be configured by the microblaze before it begins. The VGA screen will display the live camera feed with the modified maze through image processing and BFS with the walls in white, free space in black, solved path in green and distance gradient in blue. To pause the live feed press the center button and to resume press the right button.
 
 The Verilog files for the project are inside maze_solver/maze_solver.srcs which are used to interface with the VGA and camera. The bfs_ip and image_proc_ips have their folders with the respective IPs inside.
+
+The python_scripts folder contains two scripts:
+ - gen_maze.py generates a random maze
+ - maze_serdes.py has two options:
+    1. serialize a inputted rectangular bitmap so it can be inputted into a RAM through testbench via readmemb, also generates the golden output that is expected based on the input maze and start position
+    2. deserialize the output data from the testbench into a rectangular form so it can be compared to an expected golden output
